@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MergePDF from './components/MergePDF';
 import TextToPDF from './components/TextToPDF';
 import Login from './components/Login';
+import { PWAInstallButton } from './components/PWAInstallButton';
+import { OfflineIndicator } from './components/OfflineIndicator';
 import './App.css';
 
 export default function App() {
@@ -147,6 +149,8 @@ export default function App() {
 
           {/* Controls Right */}
           <div className="flex items-center gap-2">
+            <PWAInstallButton />
+
             <span
               className={`text-xs font-mono px-2 py-1 uppercase tracking-wider inline-block ${
                 apiStatus === 'RUNNING'
@@ -226,6 +230,9 @@ export default function App() {
           {authToken ? `Authenticated as ${userRole || 'Admin'}` : 'Super Admin Gate Enabled'}
         </div>
       </footer>
+
+      {/* Offline Status Banner */}
+      <OfflineIndicator />
     </div>
   );
 }
