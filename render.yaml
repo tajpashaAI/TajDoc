@@ -1,0 +1,16 @@
+# TajDoc - Deployment Configuration for Render.com
+services:
+  - type: web
+    name: tajdoc
+    env: node
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_PASSWORD
+        generateValue: false
+        value: tajdoc2026
+      - key: FLASK_PORT
+        value: 5001
